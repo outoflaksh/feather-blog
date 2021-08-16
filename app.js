@@ -1,5 +1,12 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
+const mongoose = require('mongoose');
+
+//MONGODB CONNECTION
+mongoose.connect('mongodb://localhost/blog-posts', { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true 
+});
 
 const PORT = process.env.PORT || 3000;
 
