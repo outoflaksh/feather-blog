@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const posts = require('./posts').posts;
+const Post = require('../models/post');
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+    const posts = await Post.find().sort({ createdAt : 'desc' });
     res.render('home.ejs', { posts : posts });
 })
 

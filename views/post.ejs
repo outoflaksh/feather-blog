@@ -11,9 +11,8 @@
                             <!-- SUBTITLE -->
                             <h2 class="subheading"><%= post.subtitle %></h2>
                             <span class="meta">
-                                Posted by
-                                <a href="#!">Start Bootstrap</a>
-                                on August 24, 2021
+                                Posted
+                                on <%= post.createdAt.toLocaleDateString() %>
                             </span>
                         </div>
                     </div>
