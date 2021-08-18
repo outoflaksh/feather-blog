@@ -4,17 +4,22 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start" : "node app.js",
+    "start": "node app.js",
     "devStart": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dompurify": "^2.3.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.1",
-    "mongoose": "^5.13.7"
+    "jsdom": "^17.0.0",
+    "marked": "^3.0.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.13.7",
+    "slugify": "^1.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"

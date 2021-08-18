@@ -1,6 +1,14 @@
-
+<style>
+    .delete-btn {
+        background: rgb(197, 0, 66);
+        color: white;
+        border: none;
+        font-family: 'Open Sans';
+        margin-top: 5px;
+    }
+</style>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('/assets/img/post-bg.jpg')">
+        <header class="masthead" style="background-image: url('https://source.unsplash.com/ilVYjf0J378/')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -14,6 +22,10 @@
                                 Posted
                                 on <%= post.createdAt.toLocaleDateString() %>
                             </span>
+
+                            <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
+                                <input type="submit" value="Delete Post" class="delete-btn">
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -24,7 +36,7 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <%= post.mainBody %>
+                        <%- post.bodyHtml %>
                     </div>
                 </div>
             </div>

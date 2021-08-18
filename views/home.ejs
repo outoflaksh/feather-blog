@@ -28,9 +28,7 @@
                                 <h3 class="post-subtitle"><%= post.subtitle %></h3>
                             </a>
                             <p class="post-meta">
-                                Posted by
-                                <a href="#!">Start Bootstrap</a>
-                                on September 24, 2021
+                                Posted on <%= post.createdAt.toLocaleDateString() %>
                             </p>
                         </div>
                         <!-- Divider-->

@@ -18,10 +18,10 @@ router.post('/', async (req, res) => {
         mainBody : req.body.mainBody,
     })
     try {
-        post = await newPost.save();
-        res.redirect(`/posts/${post.id}`);
+        newPost = await newPost.save();
+        res.redirect(`/posts/${newPost.id}`);
     } catch(err) {
-
+        console.log(err);
     }
 })
 
@@ -36,4 +36,11 @@ router.get('/:id', async (req, res) => {
     res.render('post.ejs', { post : post })
 
 })
+
+router.delete('/:id', async (req, res) => {
+    await Post.findByIdAndDelete(req.params.id);
+
+    res.redirect('/');
+})
+
 module.exports = { router : router, posts : posts };
