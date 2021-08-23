@@ -4,12 +4,6 @@ const createDomPurify = require('dompurify');
 const { JSDOM } = require('jsdom');
 const dompurify = createDomPurify(new JSDOM().window)
 
-function sanitizeMarkdown(post) {
-    
-    if (post.mainBody) {
-        post.bodyHtml = dompurify.sanitize(marked(post.mainBody));
-    }
-}
 const postSchema = new mongoose.Schema({
     title : {
         required : true,
@@ -29,9 +23,16 @@ const postSchema = new mongoose.Schema({
     },
     bodyHtml : {
         type: String,
-        required : true,
-        default : sanitizeMarkdown(mainBody),
+        required: true,
     },
+});
+
+postSchema.pre('validate', function(next) {
+    if (this.mainBody) {
+        this.bodyHtml = dompurify.sanitize(marked(this.mainBody));
+    };
+
+    next();
 });
 
 module.exports = mongoose.model('Post', postSchema);
