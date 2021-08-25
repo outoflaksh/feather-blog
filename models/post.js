@@ -25,6 +25,10 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    coverImageSource : {
+        type : String,
+        required : true,
+    }
 });
 
 postSchema.pre('validate', function(next) {
@@ -32,6 +36,9 @@ postSchema.pre('validate', function(next) {
         this.bodyHtml = dompurify.sanitize(marked(this.mainBody));
     };
 
+    if (!this.coverImageSource) {
+        this.coverImageSource = "https://source.unsplash.com/ilVYjf0J378/";
+    }
     next();
 });
 

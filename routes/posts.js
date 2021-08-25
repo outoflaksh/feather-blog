@@ -16,6 +16,7 @@ router.post('/', async (req, res) => {
         title : req.body.title,
         subtitle : req.body.subtitle,
         mainBody : req.body.mainBody,
+        coverImageSource : req.body.coverImageSource,
     })
     try {
         newPost = await newPost.save();
@@ -32,7 +33,7 @@ router.get('/:id', async (req, res) => {
     if (post == null) {
         res.redirect('/');
     }
-
+    
     res.render('post.ejs', { post : post })
 
 })
