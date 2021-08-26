@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/post');
 
-//temp in-mem db
-const posts = [];
-
 //NEW POST
 router.get('/write', (req, res) => {
     res.render('new.ejs');
@@ -44,4 +41,4 @@ router.delete('/:id', async (req, res) => {
     res.redirect('/');
 })
 
-module.exports = { router : router, posts : posts };
+module.exports = router;

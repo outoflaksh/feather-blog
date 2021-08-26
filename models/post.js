@@ -28,6 +28,10 @@ const postSchema = new mongoose.Schema({
     coverImageSource : {
         type : String,
         required : true,
+    },
+    userId : {
+        type : String,
+        required : true,
     }
 });
 
@@ -39,6 +43,9 @@ postSchema.pre('validate', function(next) {
     if (!this.coverImageSource) {
         this.coverImageSource = "https://source.unsplash.com/ilVYjf0J378/";
     }
+
+    this.userId = "random";
+    
     next();
 });
 
