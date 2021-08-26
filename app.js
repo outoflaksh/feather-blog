@@ -2,6 +2,8 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
+const passport = require('passport');
+const session = require('express-session');
 
 //MONGODB CONNECTION
 mongoose.connect('mongodb://localhost/blog-posts', { 
@@ -27,8 +29,20 @@ app.use(methodOverride('_method'));
 //STATIC
 app.use(express.static('public'));
 
+//EXPRESS SESSION
+app.use(session({
+    secret: 'secretkey',
+    resave: false,
+    saveUninitialized: true,
+  }))
+
+//PASSPORT
+app.use(passport.initialize());
+app.use(passport.session());
+
 //ROUTES
 app.use('/', require('./routes/index'));
-app.use('/posts', require('./routes/posts').router)
+app.use('/posts', require('./routes/posts'));
+app.use('/users', require('./routes/users'));
 
 app.listen(PORT, console.log(`Server up and running on port ${PORT}`));
