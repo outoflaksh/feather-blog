@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/post');
+const ensureAuthentication = require('../auth');
 
 //NEW POST
-router.get('/write', (req, res) => {
+router.get('/write', ensureAuthentication, (req, res) => {
     res.render('new.ejs');
 })
 
@@ -17,6 +18,7 @@ router.post('/', async (req, res) => {
     })
     try {
         newPost = await newPost.save();
+        console.log(req);
         res.redirect(`/posts/${newPost.id}`);
     } catch(err) {
         console.log(err);

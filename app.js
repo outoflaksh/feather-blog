@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const passport = require('passport');
 const session = require('express-session');
+const initializePassport = require('./config/passport-config');
 
 //MONGODB CONNECTION
 mongoose.connect('mongodb://localhost/blog-posts', { 
@@ -12,9 +13,14 @@ mongoose.connect('mongodb://localhost/blog-posts', {
     useCreateIndex : true,
 });
 
+initializePassport(passport)
+
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+
+//STATIC
+app.use(express.static('public'));
 
 //EJS
 app.use(expressLayouts)
@@ -26,13 +32,10 @@ app.use(express.urlencoded({ extended: false }))
 //METHOD OVERRIDE
 app.use(methodOverride('_method'));
 
-//STATIC
-app.use(express.static('public'));
-
 //EXPRESS SESSION
 app.use(session({
     secret: 'secretkey',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
   }))
 

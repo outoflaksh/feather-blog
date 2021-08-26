@@ -2,14 +2,19 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const passport = require('passport');
+const ensureAuthentication = require('../auth');
 
 //LOGIN
 router.get('/login', (req, res) => {
     res.render('login.ejs');
 })
 
-router.post('/login', (req, res) => {
-    res.send('login');
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', {
+        successRedirect : '/',
+        failureRedirect : '/users/login'
+    })(req, res, next);
 })
 
 //SIGNUP
@@ -59,5 +64,11 @@ router.post('/signup', async (req, res) => {
     }
 })
 
+
+//LOGOUT
+router.get('/logout', ensureAuthentication, (req, res) => {
+    req.logout();
+    res.redirect('/');
+})
 
 module.exports = router;
