@@ -1,13 +1,4 @@
-<style>
-    .delete-btn {
-        background: rgb(197, 0, 66);
-        color: white;
-        border: none;
-        font-family: 'Open Sans';
-        margin-top: 5px;
-    }
-</style>
-        <!-- Page Header-->
+      <!-- Page Header-->
         <header class="masthead" style="background-image: url( <%= post.coverImageSource %> ) ">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -21,11 +12,8 @@
                             <span class="meta">
                                 Posted
                                 on <%= post.createdAt.toLocaleDateString() %>
+                                by <b><%= post.author %></b>
                             </span>
-
-                            <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
-                                <input type="submit" value="Delete Post" class="delete-btn">
-                            </form>
                         </div>
                     </div>
                 </div>

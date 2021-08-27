@@ -27,11 +27,14 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/users/login">Login</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/users/signup">Sign Up</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/posts/write">Write</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/users/logout">Logout</a></li>
+                        <% if (isAuthenticated) { %>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about">Profile</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/posts/write">Write</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/users/logout">Logout</a></li>
+                        <% } else { %>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/users/login">Login</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/users/signup">Sign Up</a></li>
+                        <% } %>
                     </ul>
                 </div>
             </div>

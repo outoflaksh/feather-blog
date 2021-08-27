@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const Post = require('../models/post');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const ensureAuthentication = require('../auth');
@@ -56,7 +57,6 @@ router.post('/signup', async (req, res) => {
             });
 
             newUser = await newUser.save();
-
             res.redirect('/users/login');
         } catch(err) {
             console.log(err);
@@ -69,6 +69,19 @@ router.post('/signup', async (req, res) => {
 router.get('/logout', ensureAuthentication, (req, res) => {
     req.logout();
     res.redirect('/');
+})
+
+
+//PROFILE PAGE
+router.get('/:username', async (req, res) => {
+    let username = req.params.username;
+    let user = await User.findOne({ username : username });
+    if (user == null) {
+        res.redirect('/');
+    } else {
+        let userPosts = await Post.find({ userId : user.id });
+        res.render('about.ejs', { user : user, userPosts : userPosts });
+    }
 })
 
 module.exports = router;

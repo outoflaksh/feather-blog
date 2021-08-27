@@ -43,6 +43,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//AUTHENTICATION VIEW
+app.use(function(req, res, next) {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  next()
+});
+
 //ROUTES
 app.use('/', require('./routes/index'));
 app.use('/posts', require('./routes/posts'));

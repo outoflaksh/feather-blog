@@ -9,16 +9,17 @@ router.get('/write', ensureAuthentication, (req, res) => {
 })
 
 //RETRIEVE NEW POST
-router.post('/', async (req, res) => {
+router.post('/', ensureAuthentication, async (req, res) => {
     let newPost = new Post({
         title : req.body.title,
         subtitle : req.body.subtitle,
         mainBody : req.body.mainBody,
         coverImageSource : req.body.coverImageSource,
+        userId : req.user.id,
+        author : req.user.firstName + ' ' + req.user.lastName
     })
     try {
         newPost = await newPost.save();
-        console.log(req);
         res.redirect(`/posts/${newPost.id}`);
     } catch(err) {
         console.log(err);
@@ -32,7 +33,7 @@ router.get('/:id', async (req, res) => {
     if (post == null) {
         res.redirect('/');
     }
-    
+
     res.render('post.ejs', { post : post })
 
 })
