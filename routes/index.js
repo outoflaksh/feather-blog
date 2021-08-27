@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/about', ensureAuthentication, (req, res) => {
-    res.redirect(`/users/${req.user.username}`, { loggedInUser : req.user.username });
+    res.redirect(`/users/${req.user.username}`);
 });
 
 module.exports = router;
