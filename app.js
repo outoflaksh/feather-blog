@@ -46,6 +46,10 @@ app.use(passport.session());
 //AUTHENTICATION VIEW
 app.use(function(req, res, next) {
   res.locals.isAuthenticated = req.isAuthenticated();
+  if (req.isAuthenticated()) {
+    res.locals.loggedUsername = req.user.username;
+  }
+
   next()
 });
 

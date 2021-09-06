@@ -14,7 +14,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
                             <h1><%= user.firstName %>  <%= user.lastName %></h1>
-                            <span class="subheading">My posts</span>
+                            <span class="subheading">@<%= user.username %></span>
                         </div>
                     </div>
                 </div>
@@ -42,9 +42,11 @@
                             </p>
                             
                             <% if (isAuthenticated) { %>
-                                <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
-                                    <input type="submit" value="Delete Post" class="delete-btn">
-                                </form>
+                                <% if (loggedUsername == user.username) { %>
+                                    <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
+                                        <input type="submit" value="Delete Post" class="delete-btn">
+                                    </form>
+                                <%}%>
                             <% } %>
 
                         </div>
