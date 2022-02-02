@@ -1,91 +1,100 @@
 <!-- Include stylesheet -->
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
+  input:focus,
+  textarea:focus {
+    outline: none;
+  }
 
-input:focus, textarea:focus {
-  outline:none;
-}
-.form-row {
-  margin-bottom:25px;
-}
-.title {
-  font-size: 3rem;
-  font-family: 'Lora', serif;
-  border:none;
-  font-weight: 600;
-}
-input {
-  width: 100%;
-}
+  .form-row {
+    margin-bottom: 5px;
+  }
+input, textarea {
+  
+  background: transparent;
+  color: #EEFCFD;
 
-.publish-btn {
-  border-style:none;
-  background-color: #262626;
-  font-family: 'Open Sans';
-  color: white;
-  padding: 10px;
-  transition: 0.1s ease;
 }
-
-.cancel-btn {
-  border-style:none;
-  background-color: #c5003b;
-  font-family: 'Open Sans';
-  color: white;
-  padding: 10px;
-  transition: 0.1s ease;
-  display: inline;
-}
-
-.publish-btn:hover {
-  background-color: #494949;
-  transform: translateY(-5px);
-  box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
-}
-
-.subheading {
-  font-size: 1.5rem;
-  font-family: 'Lora', serif;
-  border:none;
-}
+  .title {
+    font-size: 2rem;
+    font-family: inherit;
+    border: none;
+    font-weight: 600;
+  }
+  .subheading {
+    font-size: 1.2rem;
+    font-family: inherit;
+    border: none;
+  }
 
 textarea {
-  width:100%;
+  width: 100%;
   min-height: 100vh;
-  border: none
+  border: none;
+  font: inherit;
+  padding: 15px;
 }
+
+  input {
+    width: 100%;
+  }
+
+  .publish-btn {
+    border-style: none;
+    background-color: #262626;
+    font-family: 'Open Sans';
+    color: white;
+    padding: 10px;
+    transition: 0.1s ease;
+  }
+
+  .cancel-btn {
+    border-style: none;
+    background-color: #c5003b;
+    font-family: 'Open Sans';
+    color: white;
+    padding: 10px;
+    transition: 0.1s ease;
+    display: inline;
+  }
+
+  .publish-btn:hover {
+    background-color: #dddddd;
+    transform: translateY(-5px);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
 </style>
-<header class="masthead" style="background-image: url('https://source.unsplash.com/1_CMoFsPfso/')">
-  <div class="container position-relative px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-          <div class="col-md-10 col-lg-8 col-xl-7">
-              <div class="post-heading">
-                  <h1>Write a new story</h1>
-                  <h2 class="subheading">Because everything starts with that first word</h2>
-              </div>
-          </div>
+<!-- Page Header-->
+<header class="masthead">
+  <div class="bg" style="background-image: url('assets/img/home-bg.jpg')">
+    <div class="site-info-container">
+      <div class="site-heading">
+        <h1 style="font-size: 2.4rem;">Write a new story</h1>
+        <span>Because everything starts with that first line</span>
       </div>
+    </div>
   </div>
 </header>
-<div class="container px-4 px-lg-5">
-  <div class="row gx-4 gx-lg-5 justify-content-center">
-<div class="col-md-10 col-lg-8 col-xl-7">
-<form action="/posts" method="POST">
-  <div class="form-row">
-    <input type="submit" class="publish-btn" value="Publish">
+<div class="container">
+  <div class="form-container">
+    <form action="/posts" method="POST">
+      <div class="form-row">
+        <input type="submit" class="publish-btn" value="Publish">
+      </div>
+      <div class="form-row">
+        <input type="text" name="coverImageSource" placeholder="Image URL for blog cover (optional)" autocomplete="off">
+      </div>
+      <div class="form-row">
+        <input type="text" class="title" name="title" placeholder="Write your title here..." wrap="soft"
+          autocomplete="off" required>
+      </div>
+      <div class="form-row">
+        <input type="text" class="subheading" name="subtitle" placeholder="Your subtitle" wrap="soft" autocomplete="off"
+          required>
+      </div>
+      <textarea name="mainBody" id="story"placeholder="Your story goes here (Markdown also works!)"
+        wrap="hard" required></textarea>
+    </form>
   </div>
-  <div class="form-row">
-    <label for="coverImageSource">Image URL for blog cover (optional):</label>
-    <input type="text" name="coverImageSource" autocomplete="off">
-  </div>
-  <div class="form-row">
-  <input type="text" class = "title" name="title" placeholder="Write your title here..." wrap="soft" autocomplete="off" required>
-  </div>
-  <div class="form-row">
-    <input type="text" class="subheading" name="subtitle" placeholder="Your subtitle"wrap="soft" autocomplete="off" required>
-  </div>
-  <textarea name="mainBody" id="story" cols="30" rows="10" placeholder="Your story goes here (Markdown also works!)" wrap="hard" required></textarea>
-</form>
-</div>
-</div>
 </div>

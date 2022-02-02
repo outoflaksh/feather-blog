@@ -7,54 +7,58 @@
         margin-top: 5px;
     }
 </style>
-        <!-- Page Header-->
-        <header class="masthead" style="background-image: url('/assets/img/about-bg.jpg')">
-            <div class="container position-relative px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div class="page-heading">
-                            <h1><%= user.firstName %>  <%= user.lastName %></h1>
-                            <span class="subheading">@<%= user.username %></span>
-                        </div>
-                    </div>
-                </div>
+<header class="masthead">
+    <div class="bg">
+        <div class="site-info-container">
+            <div class="site-heading">
+                <h1 style="font-size: 2.4rem;">
+                    <%= user.firstName %>
+                        <%= user.lastName %>
+                </h1>
+                <span>@<%= user.username %></span>
             </div>
-        </header>
-        <!-- Main Content-->
-        <main class="mb-4">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                       <!-- Post preview-->
-                    <% if (userPosts.length === 0) { %>
-                        <p> <center> Whoops! Looks like you don't have any posts yet! </center> </p>
-                    <% } %>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<section class="container">
+    <!-- Divider-->
+    <div class="posts-preview">
+        <h1 class="heading"><%= user.firstName %>'s Posts</h1>
+        <hr class="divider" />
+        <!-- Post preview-->
+        <% if (userPosts.length===0) { %>
+            <p class="post-subtitle">
+                Whoops! Looks like there aren't any posts yet!
+            </p>
+            <% } %>
 
-                    <% userPosts.forEach((post) => { %>
-                        <div class="post-preview">
-                            <a href="/posts/<%= post.id %>">
-                                <h2 class="post-title"><%= post.title %></h2>
-                                <h3 class="post-subtitle"><%= post.subtitle %></h3>
-                            </a>
+                <% userPosts.forEach((post)=> { %>
+                    <div class="post-preview">
+                        <a href="/posts/<%= post.id %>">
+                            <h2 class="post-title">
+                                <%= post.title %>
+                            </h2>
+
                             <p class="post-meta">
                                 Posted on <%= post.createdAt.toLocaleDateString() %>
-                                by <%= post.author %>
+                                    by <%= post.author %>
                             </p>
-                            
-                            <% if (isAuthenticated) { %>
-                                <% if (loggedUsername == user.username) { %>
-                                    <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
-                                        <input type="submit" value="Delete Post" class="delete-btn">
-                                    </form>
-                                <%}%>
-                            <% } %>
+                            <h3 class="post-subtitle">
+                                <%= post.subtitle %>
+                            </h3>
+                        </a>
 
-                        </div>
-                        <!-- Divider-->
-                        <hr class="my-4" />
-                    <%})%>
-                    <!-- Pager-->
+                        <% if (isAuthenticated) { %>
+                            <% if (loggedUsername==user.username) { %>
+                                <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
+                                    <input type="submit" value="Delete Post" class="delete-btn">
+                                </form>
+                                <%}%>
+                                    <% } %>
+
                     </div>
-                </div>
-            </div>
-        </main>
+                    <%})%>
+                        <hr class="divider" />
+    </div>
+</section>
