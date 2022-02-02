@@ -1,41 +1,39 @@
-
-        <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
-            <div class="container position-relative px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div class="site-heading">
-                            <h1 >Blog Site</h1>
-                            <span class="subheading">Where ideas spread</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Main Content-->
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <!-- Post preview-->
-                    <% if (posts.length === 0) { %>
-                        <p> <center> Whoops! Looks like there aren't any posts yet! </center> </p>
-                    <% } %>
-
-                    <% posts.forEach((post) => { %>
-                        <div class="post-preview">
-                            <a href="/posts/<%= post.id %>">
-                                <h2 class="post-title"><%= post.title %></h2>
-                                <h3 class="post-subtitle"><%= post.subtitle %></h3>
-                            </a>
-                            <p class="post-meta">
-                                Posted on <%= post.createdAt.toLocaleDateString() %>
-                                by <%= post.author %>
-                            </p>
-                        </div>
-                        <!-- Divider-->
-                        <hr class="my-4" />
-                    <%})%>
-                    <!-- Pager-->
-                </div>
-            </div>
+<!-- Page Header-->
+<header class="masthead">
+    <div class="bg" style="background-image: url('assets/img/home-bg.jpg')">
+    <div class="site-info-container">
+        <div class="site-heading">
+            <h1>feather</h1>
+            <span>Where ideas come together</span>
         </div>
+    </div>
+</div>
+</header>
+<!-- Main Content-->
+<section class="container">
+    <!-- Divider-->
+    <div class="posts-preview">
+        <h1 class="heading">Latest Posts</h1>
+        <hr class="divider" />
+        <!-- Post preview-->
+        <% if (posts.length === 0) { %>
+            <p> <center> Whoops! Looks like there aren't any posts yet! </center> </p>
+        <% } %>
+
+        <% posts.forEach((post) => { %>
+            <div class="post-preview">
+                <a href="/posts/<%= post.id %>">
+                    <h2 class="post-title"><%= post.title %></h2>
+                    <p class="post-meta">
+                        Posted on <%= post.createdAt.toLocaleDateString() %>
+                        by <%= post.author %>
+                    </p>
+                    <h3 class="post-subtitle"><%= post.subtitle %></h3>
+                </a>
+            </div>
+        <%})%>
+        <!-- Pager-->
+    <!-- Divider-->
+    <hr class="divider" />
+    </div>
+</section>
