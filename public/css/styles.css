@@ -25,6 +25,11 @@ a {
   font-weight: inherit;
 }
 
+::placeholder {
+  color: #adbabb;
+  opacity: 1; /* Firefox */
+}
+
 .footer {
   min-height: 20vh;
   width: 100%;
@@ -123,7 +128,7 @@ header .site-info-container {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 header .bg {
@@ -145,6 +150,7 @@ header .bg {
   font-weight: 500;
   font-size: 1.4rem;
   letter-spacing: 0.01rem;
+  margin-top: -50px;
 }
 
 .posts-preview {
@@ -173,7 +179,6 @@ header .bg {
   font-family: "Roboto", sans-serif;
   font-weight: 900;
   font-size: 1.8rem;
-  line-height: 50%;
   transition: 0.2s ease;
 }
 
@@ -181,6 +186,7 @@ header .bg {
   font-family: "Roboto Slab", serif;
   font-weight: 400;
   font-size: 1.1rem;
+  margin-top: -10px;
 }
 
 .post-meta {
@@ -188,7 +194,7 @@ header .bg {
   font-weight: 300;
   font-style: italic;
   font-size: 0.95rem;
-  line-height: 30%;
+  margin-top: -20px;
 }
 
 .divider {
@@ -292,4 +298,23 @@ input[type="submit"] {
   font-family: "Roboto", sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
+}
+
+@media only screen and (max-width: 850px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .site-heading {
+    line-height: 100%;
+  }
+
+  .posts-preview,
+  .post-container,
+  .post-heading {
+    width: 80%;
+  }
+  .form-container {
+    width: 95%;
+  }
 }
