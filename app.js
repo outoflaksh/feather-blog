@@ -9,7 +9,7 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 //MONGODB CONNECTION
-connectDB();
+connectDB(process.env.MONGO_URI);
 
 initializePassport(passport);
 
