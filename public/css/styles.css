@@ -82,6 +82,7 @@ a {
 
 .navbar-nav {
   margin-right: 10px;
+  text-align: center;
 }
 
 .navbar li {
@@ -306,7 +307,7 @@ input[type="submit"] {
   }
 
   .site-heading {
-    line-height: 100%;
+    line-height: normal;
   }
 
   .posts-preview,
