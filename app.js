@@ -5,7 +5,9 @@ const methodOverride = require("method-override");
 const passport = require("passport");
 const session = require("express-session");
 const initializePassport = require("./config/passport-config");
+const dotenv = require("dotenv");
 
+dotenv.config();
 //MONGODB CONNECTION
 connectDB();
 
