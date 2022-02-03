@@ -60,6 +60,7 @@
 <b>
 Feather is a fully-functioning blog web application that supports Markdown and also implements a complete user model with custom profile pages, dynamic post routes, and username+password based auth-flow.
 <br />
+ 
 Every user can write a blog post and additionally provide a title, subtitle, and a cover image to go with the content. They can also delete their posts from their profile page. The blog supports Markdown and hence all the text formatting such as headings, subheadings, lists, links, bold/italics also work.
 </b>
 <p align="right">(<a href="#top">back to top</a>)</p>
